@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Ludo</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#06152c;
+    color:white;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+.app{
+    width:100%;
+    max-width:768px;
+    min-height:100vh;
+    margin:auto;
+    background:
+        radial-gradient(circle at 50% 20%, #102e58 0%, #071a35 35%, #041126 75%);
+    padding-bottom:95px;
+}
+
+/* TOP BAR */
+.topbar{
+    height:90px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 25px;
+}
+
+.logo{
+    width:125px;
+    height:auto;
+    object-fit:contain;
+}
+
+.top-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.notification{
+    position:relative;
+    font-size:28px;
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.notification span{
+    position:absolute;
+    right:-1px;
+    top:-3px;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:#ff3131;
+    color:white;
+    font-size:13px;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.balance{
+    height:48px;
+    min-width:84px;
+    border-radius:28px;
+    background:#fff;
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.coin{
+    width:27px;
+    height:27px;
+    border-radius:50%;
+    background:#171717;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:5px 25px 20px;
+}
+
+.hero-image{
+    width:100%;
+    max-width:420px;
+    height:245px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto 5px;
+}
+
+.hero h1{
+    font-size:48px;
+    line-height:1.1;
+    font-weight:800;
+    margin-top:0;
+    letter-spacing:-1px;
+}
+
+.hero p{
+    font-size:24px;
+    color:#e1e4eb;
+    margin-top:14px;
+}
+
+.play-btn{
+    width:90%;
+    max-width:530px;
+    height:72px;
+    margin:27px auto 35px;
+    border:0;
+    border-radius:40px;
+    background:linear-gradient(#ffd900,#ffc400);
+    color:#080808;
+    font-size:27px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:
+        0 0 12px rgba(255,213,0,.75),
+        0 0 30px rgba(255,196,0,.28);
+}
+
+/* TABS */
+.tabs{
+    margin:0 30px 35px;
+    height:78px;
+    border:1px solid rgba(170,210,240,.28);
+    border-radius:30px;
+    padding:6px;
+    display:flex;
+    background:rgba(8,27,48,.55);
+}
+
+.tab{
+    width:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    border-radius:25px;
+    font-size:24px;
+    font-weight:bold;
+    color:#ddd;
+}
+
+.tab.active{
+    background:linear-gradient(90deg,#08bde0,#20bce5);
+    color:white;
+    box-shadow:0 0 18px rgba(0,203,245,.28);
+}
+
+/* CARDS */
+.cards{
+    padding:0 30px;
+}
+
+.card{
+    width:100%;
+    min-height:155px;
+    border-radius:25px;
+    margin-bottom:20px;
+    overflow:hidden;
+    position:relative;
+}
+
+.matches{
+    background:
+        linear-gradient(90deg,
+        rgba(3,18,39,.98) 0%,
+        rgba(3,18,39,.85) 40%,
+        rgba(3,18,39,.25) 100%),
+        url("ludo-match.jpg") center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    padding:25px;
+}
+
+.match-icon{
+    width:64px;
+    height:64px;
+    border-radius:13px;
+    background:#07182f;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-right:20px;
+    font-size:31px;
+}
+
+.match-info h2{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.match-info p{
+    color:#bdc4d0;
+    font-size:17px;
+    letter-spacing:1px;
+}
+
+/* TELEGRAM */
+.telegram{
+    min-height:135px;
+    padding:25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:
+        linear-gradient(135deg,
+        rgba(7,70,105,.9),
+        rgba(5,36,67,.92));
+    border:1px solid rgba(0,190,255,.32);
+    box-shadow:inset 0 0 25px rgba(0,180,255,.08);
+}
+
+.telegram-left{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.telegram-icon{
+    width:62px;
+    height:62px;
+    border-radius:50%;
+    background:#16aee5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:31px;
+}
+
+.telegram h2{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.telegram p{
+    color:#d1d9e2;
+    font-size:17px;
+}
+
+.join{
+    border:none;
+    background:#ffd000;
+    color:#111;
+    font-size:17px;
+    font-weight:800;
+    padding:17px 25px;
+    border-radius:30px;
+    box-shadow:0 0 15px rgba(255,210,0,.35);
+}
+
+/* WITHDRAW */
+.withdraw{
+    min-height:255px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+        radial-gradient(circle at 50% 30%,rgba(25,60,65,.35),transparent 50%),
+        rgba(17,31,43,.9);
+    border:1px solid rgba(130,160,180,.25);
+}
+
+.safe-icon{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#3dd45f;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:42px;
+    margin-bottom:25px;
+    box-shadow:0 0 20px rgba(50,220,90,.3);
+}
+
+.withdraw h2{
+    font-size:26px;
+    margin-bottom:14px;
+}
+
+.withdraw p{
+    font-size:20px;
+    color:#d0d5dc;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+    position:fixed;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:0;
+    width:100%;
+    max-width:768px;
+    height:96px;
+    padding:8px 25px 12px;
+    background:rgba(4,20,39,.96);
+    border-top:1px solid rgba(140,180,210,.16);
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:100;
+    backdrop-filter:blur(14px);
+}
+
+.nav-item{
+    width:32%;
+    height:70px;
+    border-radius:38px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    color:#f2f2f2;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.nav-item.active{
+    background:linear-gradient(135deg,#395b6c,#426779);
+    border:1px solid rgba(210,240,255,.45);
+    box-shadow:inset 0 0 20px rgba(255,255,255,.05);
+}
+
+.nav-icon{
+    font-size:24px;
+    line-height:1;
+}
+
+/* MOBILE */
+@media(max-width:500px){
+
+    .topbar{
+        height:82px;
+        padding:12px 18px;
+    }
+
+    .logo{
+        width:115px;
+    }
+
+    .notification{
+        font-size:25px;
+    }
+
+    .balance{
+        min-width:78px;
+        height:44px;
+        font-size:20px;
+    }
+
+    .hero{
+        padding-top:0;
+    }
+
+    .hero-image{
+        height:235px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:21px;
+    }
+
+    .play-btn{
+        height:67px;
+        font-size:25px;
+        margin-top:25px;
+    }
+
+    .tabs{
+        margin-left:30px;
+        margin-right:30px;
+        height:74px;
+    }
+
+    .tab{
+        font-size:21px;
+    }
+
+    .cards{
+        padding:0 30px;
+    }
+
+    .telegram{
+        padding:20px;
+    }
+
+    .telegram-left{
+        gap:13px;
+    }
+
+    .telegram-icon{
+        width:57px;
+        height:57px;
+    }
+
+    .telegram h2{
+        font-size:22px;
+    }
+
+    .telegram p{
+        font-size:15px;
+    }
+
+    .join{
+        padding:15px 19px;
+        font-size:15px;
+    }
+}
+
+@media(max-width:380px){
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .cards{
+        padding:0 20px;
+    }
+
+    .tabs{
+        margin-left:20px;
+        margin-right:20px;
+    }
+
+    .telegram{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+    }
+
+    .join{
+        align-self:flex-end;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- TOP -->
+    <header class="topbar">
+
+        <!-- এখানে তোমার Top Ludo PNG Logo বসাবে -->
+        <img src="top-ludo-logo.png"
+             class="logo"
+             alt="Top Ludo">
+
+        <div class="top-right">
+
+            <div class="notification">
+                🔔
+                <span>4</span>
+            </div>
+
+            <div class="balance">
+                <div class="coin">৳</div>
+                <span>0</span>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <!-- Hero Ludo Image -->
+        <img src="ludo-hero.png"
+             class="hero-image"
+             alt="Top Ludo">
+
+        <h1>Top Ludo</h1>
+
+        <p>Ludo in under 10 minutes</p>
+
+        <button class="play-btn">
+            Play Now
+        </button>
+
+    </section>
+
+
+    <!-- TABS -->
+    <div class="tabs">
+
+        <div class="tab active">
+            🎮
+            <span>Games</span>
+        </div>
+
+        <div class="tab">
+            ▦
+            <span>Others</span>
+        </div>
+
+    </div>
+
+
+    <!-- CARDS -->
+    <main class="cards">
+
+        <!-- LUDO MATCHES -->
+        <div class="card matches">
+
+            <div class="match-icon">
+                🎲
+            </div>
+
+            <div class="match-info">
+                <h2>Ludo Matches</h2>
+                <p>REGULAR 1 VS 1</p>
+            </div>
+
+        </div>
+
+
+        <!-- TELEGRAM -->
+        <div class="card telegram">
+
+            <div class="telegram-left">
+
+                <div class="telegram-icon">
+                    ➤
+                </div>
+
+                <div>
+                    <h2>Telegram</h2>
+                    <p>Get updates & latest news</p>
+                </div>
+
+            </div>
+
+            <button class="join">
+                Join Now →
+            </button>
+
+        </div>
+
+
+        <!-- WITHDRAW -->
+        <div class="card withdraw">
+
+            <div class="safe-icon">
+                ✓
+            </div>
+
+            <h2>Instant withdrawals</h2>
+
+            <p>100% safe payments</p>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+
+    <div class="nav-item active">
+        <div class="nav-icon">⌂</div>
+        <div>Home</div>
+    </div>
+
+    <div class="nav-item">
+        <div class="nav-icon">♟</div>
+        <div>Refer</div>
+    </div>
+
+    <div class="nav-item">
+        <div class="nav-icon">●</div>
+        <div>Profile</div>
+    </div>
+
+</nav>
+
+
+<script>
+
+/* Bottom Navigation */
+document.querySelectorAll(".nav-item").forEach(item => {
+
+    item.addEventListener("click", function(){
+
+        document.querySelectorAll(".nav-item")
+        .forEach(x => x.classList.remove("active"));
+
+        this.classList.add("active");
+
+    });
+
+});
+
+
+/* Games / Others */
+document.querySelectorAll(".tab").forEach(tab => {
+
+    tab.addEventListener("click", function(){
+
+        document.querySelectorAll(".tab")
+        .forEach(x => x.classList.remove("active"));
+
+        this.classList.add("active");
+
+    });
+
+});
+
+
+/* Play Now */
+document.querySelector(".play-btn").addEventListener("click", function(){
+
+    alert("Play Now");
+
+});
+
+</script>
+
+</body>
+  </html>
