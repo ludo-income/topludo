@@ -2,53 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Top Ludo</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      width: 100%;
-      min-height: 100%;
-      background: #000000;
-    }
-
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      overflow-x: hidden;
-    }
-
-    .app {
-      width: 100%;
-      max-width: 1024px;
-      background: #000000;
-      line-height: 0;
-    }
-
-    .app img {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 0;
-      padding: 0;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#031d52">
+  <title>Top Ludo — Responsive UI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-mini">
+        <span class="brand-crown">♛</span>
+        <span class="brand-top">TOP</span>
+        <span class="brand-ludo">LUDO</span>
+      </div>
 
-  <div class="app">
-    <img src="17985.jpg" alt="Top Ludo">
+      <div class="top-actions">
+        <button class="icon-btn bell-btn" aria-label="Notifications" id="bellBtn">🔔</button>
+        <button class="balance" id="balanceBtn" aria-label="Balance">
+          <span class="coin">৳</span><strong id="balanceValue">0</strong>
+        </button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="hero">
+        <div class="hero-art" aria-hidden="true">
+          <div class="glow glow-a"></div>
+          <div class="glow glow-b"></div>
+          <div class="piece piece-red"></div>
+          <div class="piece piece-green"></div>
+          <div class="piece piece-blue"></div>
+          <div class="piece piece-yellow"></div>
+          <div class="dice"><span>⚄</span></div>
+          <div class="board">
+            <i class="cell c1"></i><i class="cell c2"></i><i class="cell c3"></i>
+            <i class="cell c4"></i><i class="cell c5"></i><i class="cell c6"></i>
+            <i class="cell c7"></i><i class="cell c8"></i><i class="cell c9"></i>
+          </div>
+        </div>
+
+        <h1>Top Ludo</h1>
+        <p>Ludo in under 10 minutes</p>
+        <button class="primary-btn" id="playBtn">Play Now <span>→</span></button>
+      </section>
+
+      <div class="switcher" role="tablist">
+        <button class="switch active" data-tab="games">🎮 <span>Games</span></button>
+        <button class="switch" data-tab="others">▦ <span>Others</span></button>
+      </div>
+
+      <section id="gamesPanel" class="panel">
+        <article class="game-card">
+          <div class="game-icon">
+            <div class="mini-board">
+              <b>🔴</b><b>🟢</b><b>🔵</b><b>🟡</b>
+              <span>LUDO</span>
+            </div>
+          </div>
+          <div class="card-copy">
+            <h2>Ludo Matches</h2>
+            <p>REGULAR 1 VS 1</p>
+          </div>
+          <div class="game-art" aria-hidden="true">
+            <div class="mini-die">⚄</div>
+            <div class="mini-piece red"></div>
+            <div class="mini-piece blue"></div>
+            <div class="mini-piece green"></div>
+            <div class="mini-piece yellow"></div>
+          </div>
+          <span class="count-badge">0</span>
+        </article>
+
+        <article class="telegram-card">
+          <div class="telegram-logo">➤</div>
+          <div>
+            <h2>Telegram</h2>
+            <p>Get updates &amp; latest news</p>
+          </div>
+          <button class="join-btn" id="joinBtn">Join Now <span>→</span></button>
+        </article>
+
+        <article class="safe-card">
+          <div class="shield">✓</div>
+          <h2>Instant withdrawals</h2>
+          <p>100% safe payments</p>
+          <div class="chatbot" aria-hidden="true">
+            <span class="chat-pill">CHAT</span>
+            <div class="bot-face">●●</div>
+            <i>•••</i><i>•••</i>
+          </div>
+        </article>
+      </section>
+
+      <section id="othersPanel" class="others-panel hidden">
+        <div class="other-item">💰 <span>Deposit</span><small>Add money to your wallet</small></div>
+        <div class="other-item">↗️ <span>Withdraw</span><small>Request a withdrawal</small></div>
+        <div class="other-item">🛟 <span>Customer Support</span><small>Get help anytime</small></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-page="home"><span>⌂</span><b>Home</b></button>
+      <button class="nav-item" data-page="refer"><span>♟♟</span><b>Refer</b></button>
+      <button class="nav-item" data-page="profile"><span>●</span><b>Profile</b></button>
+    </nav>
   </div>
 
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
 </body>
-  </html>
+</html>
