@@ -1,1 +1,1 @@
-GitHub Pages: upload ONLY index.html to the site folder. The images are embedded inside index.html, so no assets folder/path is required.
+Locked image UI with transparent working click areas. All visible artwork remains unchanged; functionality is layered on top.
