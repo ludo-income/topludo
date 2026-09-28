@@ -1,1 +1,1 @@
-Locked image UI with transparent working click areas. All visible artwork remains unchanged; functionality is layered on top.
+Top Ludo locked UI base. The two supplied images are combined in exact order. Transparent hotspots are clickable; visible UI remains image-locked.
