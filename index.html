@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Ludo App UI</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #0b132b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        /* Mobile Frame Container */
+        .app-container {
+            width: 100%;
+            max-width: 420px;
+            height: 100vh;
+            max-height: 880px;
+            background: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Main Scrollable Area */
+        .app-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            padding-bottom: 90px;
+            background: linear-gradient(180deg, #ffffff 0%, #eef5ff 100%);
+        }
+
+        /* Top Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .header-logo {
+            font-size: 22px;
+            font-weight: 900;
+            color: #d82323;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            text-shadow: 1px 2px 0px #000;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header-logo span {
+            color: #1e3c72;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notification-btn {
+            background: #fff;
+            border: none;
+            font-size: 22px;
+            color: #f39c12;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .wallet-badge {
+            background: #000b2e;
+            border: 2px solid #0052d4;
+            border-radius: 20px;
+            padding: 4px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+        }
+
+        .wallet-badge .currency-symbol {
+            background: #fff;
+            color: #000;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        /* Hero Banner / Ludo Graphics Section */
+        .hero-section {
+            text-align: center;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .hero-banner-img {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+        }
+
+        .hero-title {
+            font-size: 38px;
+            font-weight: 900;
+            color: #1b4998;
+            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff, 0 4px 8px rgba(0,0,0,0.2);
+            line-height: 1;
+            margin-top: -10px;
+        }
+
+        .hero-subtitle-badge {
+            background: #03184d;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 5px;
+            border: 1px solid #00d2ff;
+        }
+
+        /* Main Play Button */
+        .play-now-btn {
+            width: 100%;
+            background: linear-gradient(180deg, #fff200 0%, #ffaa00 100%);
+            border: 3px solid #001f54;
+            border-radius: 30px;
+            padding: 14px 0;
+            font-size: 26px;
+            font-weight: 900;
+            color: #000000;
+            text-transform: uppercase;
+            box-shadow: 0 6px 0px #001f54, 0 8px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            transition: all 0.1s ease;
+        }
+
+        .play-now-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0px #001f54, 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Tabs (Games / Others) */
+        .tab-container {
+            background: #001a4d;
+            border: 2px solid #00d2ff;
+            border-radius: 30px;
+            display: flex;
+            padding: 3px;
+            margin-bottom: 12px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 800;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #ffffff;
+            background: transparent;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(180deg, #00d2ff 0%, #0072ff 100%);
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.5);
+        }
+
+        /* Card Item Common Style */
+        .card-box {
+            background: linear-gradient(180deg, #001a4d 0%, #003380 100%);
+            border: 2px solid #00d2ff;
+            border-radius: 18px;
+            padding: 12px;
+            margin-bottom: 12px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Notification Badge on Card */
+        .card-badge {
+            position: absolute;
+            top: -8px;
+            right: 8px;
+            background: #f39c12;
+            color: #000;
+            font-weight: 800;
+            font-size: 11px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #fff;
+        }
+
+        /* Ludo Matches Card Inner */
+        .card-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-icon-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid #00d2ff;
+        }
+
+        .card-info h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .card-info p {
+            font-size: 11px;
+            color: #a0c4ff;
+            font-weight: 600;
+        }
+
+        .card-right-img {
+            width: 100px;
+            height: auto;
+        }
+
+        /* Telegram Card Style */
+        .telegram-icon {
+            width: 45px;
+            height: 45px;
+            background: #0088cc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #fff;
+        }
+
+        .join-now-btn {
+            background: linear-gradient(180deg, #fff200 0%, #ffaa00 100%);
+            border: 1.5px solid #000;
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 13px;
+            font-weight: 800;
+            color: #000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Withdrawal Card Style */
+        .withdrawal-card {
+            background: linear-gradient(180deg, #00122e 0%, #002866 100%);
+            border-color: #00ff88;
+            flex-direction: column;
+            text-align: center;
+            padding: 15px;
+            gap: 10px;
+        }
+
+        .shield-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 255, 136, 0.15);
+            border: 2px solid #00ff88;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ff88;
+            font-size: 18px;
+            margin: 0 auto;
+        }
+
+        .withdrawal-card h4 {
+            font-size: 15px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .withdrawal-card p {
+            font-size: 11px;
+            color: #00ff88;
+        }
+
+        .chat-floating-btn {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            background: #00d2ff;
+            color: #000;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Bottom Fixed Navigation Bar */
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #000e2e;
+            border-top: 2px solid #0052d4;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            color: #5b7bb2;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            width: 30%;
+            padding: 4px 0;
+        }
+
+        .nav-item.active {
+            background: linear-gradient(180deg, #00d2ff 0%, #0072ff 100%);
+            color: #fff;
+            border-radius: 20px;
+        }
+
+        .nav-item i {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Main Content Area -->
+        <div class="app-content">
+            
+            <!-- Top Header -->
+            <div class="header">
+                <div class="header-logo">
+                    👑 TOP<span>LUDO</span>
+                </div>
+                <div class="header-actions">
+                    <button class="notification-btn"><i class="fa-regular fa-bell"></i></button>
+                    <div class="wallet-badge">
+                        <div class="currency-symbol">৳</div>
+                        <span>0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Section / Ludo Graphics -->
+            <div class="hero-section">
+                <!-- SVG Vector representation for Ludo Board & Dice -->
+                <svg class="hero-banner-img" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Board Base -->
+                    <polygon points="150,40 270,100 150,160 30,100" fill="#0d47a1" stroke="#00d2ff" stroke-width="4"/>
+                    <polygon points="150,45 260,100 150,155 40,100" fill="#ffffff"/>
+                    <!-- Board Quadrants -->
+                    <polygon points="150,55 240,100 150,145 60,100" fill="#e0e0e0"/>
+                    <polygon points="150,55 195,77 150,100 105,77" fill="#d32f2f"/>
+                    <polygon points="195,77 240,100 195,122 150,100" fill="#388e3c"/>
+                    <polygon points="150,100 195,122 150,145 105,122" fill="#fbc02d"/>
+                    <polygon points="105,77 150,100 105,122 60,100" fill="#1976d2"/>
+                    <!-- 3D Dice -->
+                    <g transform="translate(125, 20)">
+                        <polygon points="25,0 50,15 25,30 0,15" fill="#ffffff" stroke="#ccc"/>
+                        <polygon points="0,15 25,30 25,60 0,45" fill="#e0e0e0" stroke="#ccc"/>
+                        <polygon points="25,30 50,15 50,45 25,60" fill="#eeeeee" stroke="#ccc"/>
+                        <!-- Dots -->
+                        <circle cx="25" cy="15" r="3" fill="#000"/>
+                        <circle cx="12" cy="30" r="2.5" fill="#000"/>
+                        <circle cx="12" cy="42" r="2.5" fill="#000"/>
+                        <circle cx="37" cy="30" r="2.5" fill="#000"/>
+                        <circle cx="37" cy="42" r="2.5" fill="#000"/>
+                    </g>
+                    <!-- Pawns -->
+                    <circle cx="65" cy="85" r="8" fill="#d32f2f" stroke="#fff" stroke-width="2"/>
+                    <circle cx="235" cy="85" r="8" fill="#388e3c" stroke="#fff" stroke-width="2"/>
+                    <circle cx="95" cy="135" r="8" fill="#1976d2" stroke="#fff" stroke-width="2"/>
+                    <circle cx="205" cy="135" r="8" fill="#fbc02d" stroke="#fff" stroke-width="2"/>
+                </svg>
+
+                <div class="hero-title">Top Ludo</div>
+                <div class="hero-subtitle-badge">Ludo in under 10 minutes</div>
+            </div>
+
+            <!-- Big Play Button -->
+            <button class="play-now-btn">
+                Play Now <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <!-- Tabs Section -->
+            <div class="tab-container">
+                <button class="tab-btn active">
+                    <i class="fa-solid fa-gamepad"></i> Games
+                </button>
+                <button class="tab-btn">
+                    <i class="fa-solid fa-border-all"></i> Others
+                </button>
+            </div>
+
+            <!-- Ludo Matches Card -->
+            <div class="card-box">
+                <div class="card-badge">0</div>
+                <div class="card-left">
+                    <div style="width:50px; height:50px; background:#1976d2; border-radius:12px; display:flex; align-items:center; justify-content:center; border: 2px solid #fff;">
+                        <i class="fa-solid fa-chess-board" style="font-size:28px; color:#fff;"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Ludo Matches</h3>
+                        <p>REGULAR 1 VS 1</p>
+                    </div>
+                </div>
+                <svg width="60" height="40" viewBox="0 0 60 40">
+                    <polygon points="30,5 55,20 30,35 5,20" fill="#00d2ff"/>
+                    <circle cx="20" cy="18" r="4" fill="#ff0055"/>
+                    <circle cx="40" cy="18" r="4" fill="#ffcc00"/>
+                </svg>
+            </div>
+
+            <!-- Telegram Channel Card -->
+            <div class="card-box">
+                <div class="card-left">
+                    <div class="telegram-icon">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Telegram</h3>
+                        <p>Get updates & latest news</p>
+                    </div>
+                </div>
+                <button class="join-now-btn">
+                    Join Now <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Instant Withdrawals Card -->
+            <div class="card-box withdrawal-card">
+                <div class="shield-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h4>Instant withdrawals</h4>
+                    <p>100% safe payments</p>
+                </div>
+                <div class="chat-floating-btn">
+                    <i class="fa-solid fa-robot"></i> CHAT
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Fixed Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="#" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Refer</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </div>
+
+</body>
+  </html>
