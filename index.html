@@ -130,7 +130,7 @@
     <div class="app-container">
         
         <!-- HEADER BAR -->
-        <header class="flex justify-between items-center px-4 pt-4 pb-2 z-20">
+        <header class="flex justify-between items-center px-3 pt-4 pb-2 z-20">
             <!-- Logo Section - matches screenshot style -->
             <div class="flex items-center cursor-pointer touch-effect" onclick="showNotification('Top Ludo Home')">
                 <div class="relative flex flex-col items-center leading-none">
@@ -161,95 +161,22 @@
             </div>
         </header>
 
-        <!-- HERO SECTION -->
-        <section class="relative px-4 pt-2 pb-4 flex flex-col items-center text-center">
-            <!-- Background Radial Glow Behind Board -->
-            <div class="absolute top-12 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl glow-bg pointer-events-none"></div>
-
-            <!-- 3D Graphic Composition (Board, Pawns, Dice) -->
-            <div class="relative w-full max-w-[320px] h-56 my-1 flex items-center justify-center animate-float">
-                <!-- Isometric Ludo Board Mockup -->
-                <div class="relative w-64 h-36 transform rotate-x-60 -rotate-z-30 perspective-1000">
-                    <!-- Shiny Board Base -->
-                    <div class="w-full h-full bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-900 rounded-xl p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_30px_rgba(0,195,255,0.5)] border-2 border-cyan-300">
-                        <div class="w-full h-full bg-slate-900 rounded-lg grid grid-cols-2 gap-1 p-1">
-                            <div class="bg-red-600 rounded-sm flex items-center justify-center border border-red-400">
-                                <div class="w-6 h-6 bg-white/80 rounded-full border-2 border-red-600"></div>
-                            </div>
-                            <div class="bg-green-600 rounded-sm flex items-center justify-center border border-green-400">
-                                <div class="w-6 h-6 bg-white/80 rounded-full border-2 border-green-600"></div>
-                            </div>
-                            <div class="bg-blue-600 rounded-sm flex items-center justify-center border border-blue-400">
-                                <div class="w-6 h-6 bg-white/80 rounded-full border-2 border-blue-600"></div>
-                            </div>
-                            <div class="bg-yellow-500 rounded-sm flex items-center justify-center border border-yellow-300">
-                                <div class="w-6 h-6 bg-white/80 rounded-full border-2 border-yellow-500"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3D Glowing Dice in Center -->
-                <div class="absolute z-20 top-6 left-1/2 -translate-x-1/2 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]">
-                    <div class="w-16 h-16 bg-gradient-to-br from-white via-slate-100 to-slate-300 rounded-2xl border-2 border-white flex items-center justify-center shadow-[0_0_25px_rgba(255,255,255,0.9)] transform rotate-12">
-                        <div class="grid grid-cols-3 gap-1.5 p-2">
-                            <span class="w-2.5 h-2.5 bg-black rounded-full"></span>
-                            <span class="w-2.5 h-2.5 bg-transparent"></span>
-                            <span class="w-2.5 h-2.5 bg-black rounded-full"></span>
-                            <span class="w-2.5 h-2.5 bg-transparent"></span>
-                            <span class="w-2.5 h-2.5 bg-red-600 rounded-full"></span>
-                            <span class="w-2.5 h-2.5 bg-transparent"></span>
-                            <span class="w-2.5 h-2.5 bg-black rounded-full"></span>
-                            <span class="w-2.5 h-2.5 bg-transparent"></span>
-                            <span class="w-2.5 h-2.5 bg-black rounded-full"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3D Pawns Standing Around -->
-                <!-- Red Pawn -->
-                <div class="absolute left-8 top-2 z-10 filter drop-shadow-[0_8px_6px_rgba(0,0,0,0.7)]">
-                    <div class="w-8 h-16 bg-gradient-to-t from-red-800 via-red-500 to-red-400 rounded-full border border-red-300 flex flex-col items-center">
-                        <div class="w-6 h-6 bg-red-300 rounded-full mt-1 border border-white"></div>
-                    </div>
-                </div>
-                <!-- Yellow Pawn -->
-                <div class="absolute left-16 top-16 z-20 filter drop-shadow-[0_8px_6px_rgba(0,0,0,0.7)]">
-                    <div class="w-8 h-16 bg-gradient-to-t from-amber-700 via-yellow-400 to-yellow-200 rounded-full border border-yellow-100 flex flex-col items-center">
-                        <div class="w-6 h-6 bg-yellow-100 rounded-full mt-1 border border-white"></div>
-                    </div>
-                </div>
-                <!-- Green Pawn -->
-                <div class="absolute right-16 top-2 z-10 filter drop-shadow-[0_8px_6px_rgba(0,0,0,0.7)]">
-                    <div class="w-8 h-16 bg-gradient-to-t from-green-900 via-green-500 to-emerald-300 rounded-full border border-green-200 flex flex-col items-center">
-                        <div class="w-6 h-6 bg-green-200 rounded-full mt-1 border border-white"></div>
-                    </div>
-                </div>
-                <!-- Blue Pawn -->
-                <div class="absolute right-8 top-16 z-20 filter drop-shadow-[0_8px_6px_rgba(0,0,0,0.7)]">
-                    <div class="w-8 h-16 bg-gradient-to-t from-blue-900 via-blue-500 to-cyan-300 rounded-full border border-cyan-200 flex flex-col items-center">
-                        <div class="w-6 h-6 bg-cyan-100 rounded-full mt-1 border border-white"></div>
-                    </div>
-                </div>
+        <!-- HERO SECTION - using provided PNG graphic (logo + board + title) -->
+        <section class="relative px-3 pt-1 pb-2 flex flex-col items-center text-center">
+            <!-- Hero Image from provided PNG -->
+            <div class="w-full flex justify-center -mt-1">
+                <img src="hero.png" alt="Top Ludo" class="w-full max-w-[360px] h-auto object-contain">
             </div>
 
-            <!-- Title & Tagline -->
-            <h1 class="text-4xl font-black tracking-wide font-montserrat text-white text-glow mt-1">
-                Top Ludo
-            </h1>
-            <p class="text-slate-200 text-sm font-medium mt-0.5 tracking-wide opacity-90">
-                Ludo in under 10 minutes
-            </p>
-
-            <!-- Main CTA Button -->
-            <button onclick="startGame()" class="btn-yellow w-full max-w-xs py-3.5 px-6 rounded-full font-extrabold text-xl mt-4 flex items-center justify-center space-x-2 border-2 border-yellow-200 tracking-wider uppercase touch-effect cursor-pointer">
-                <span>Play Now</span>
+            <!-- Main CTA Button - full width, less side space -->
+            <button onclick="startGame()" class="btn-yellow w-full py-3.5 px-6 rounded-full font-extrabold text-xl mt-3 flex items-center justify-center space-x-2 border-2 border-yellow-200 tracking-wider uppercase touch-effect cursor-pointer">
+                <span>PLAY NOW</span>
                 <i class="fa-solid fa-arrow-right text-lg"></i>
             </button>
         </section>
 
         <!-- CATEGORY NAVIGATION TAB -->
-        <div class="px-4 my-3">
+        <div class="px-3 my-3">
             <div class="bg-[#051842] p-1.5 rounded-full border border-blue-500/30 flex items-center shadow-inner">
                 <!-- Games Tab (Active) -->
                 <button id="tab-games" onclick="switchCategory('games')" class="flex-1 py-2.5 rounded-full flex items-center justify-center space-x-2 font-bold text-sm text-white btn-cyan transition-all duration-300 shadow-md">
@@ -265,7 +192,7 @@
         </div>
 
         <!-- MAIN CARDS CONTAINER -->
-        <main id="content-games" class="px-4 space-y-3 flex-1">
+        <main id="content-games" class="px-3 space-y-3 flex-1">
             
             <!-- CARD 1: LUDO MATCHES -->
             <div onclick="selectMatch()" class="neon-card rounded-2xl p-3.5 flex items-center justify-between cursor-pointer touch-effect relative overflow-hidden group">
@@ -367,7 +294,7 @@
         </main>
 
         <!-- OTHERS TAB CONTENT (Hidden by default) -->
-        <main id="content-others" class="px-4 space-y-3 flex-1 hidden">
+        <main id="content-others" class="px-3 space-y-3 flex-1 hidden">
             <div class="neon-card rounded-2xl p-6 text-center text-slate-300">
                 <i class="fa-solid fa-trophy text-4xl text-yellow-400 mb-2"></i>
                 <h3 class="text-lg font-bold text-white">Leaderboard & Tournaments</h3>
