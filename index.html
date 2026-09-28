@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
+
+<title>Top Ludo</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+    background:#031a40;
+}
+
+body{
+    overflow-x:hidden;
+    font-family:Arial, sans-serif;
+}
+
+
+/* =========================================
+   MAIN PIXEL-PERFECT SCREEN
+========================================= */
+
+.app{
+    position:relative;
+
+    width:100%;
+    max-width:752px;
+
+    margin:0 auto;
+
+    /*
+       IMPORTANT:
+       আপনার original screenshot-এর
+       exact ratio ধরে রাখবে।
+    */
+
+    aspect-ratio:752 / 1504;
+
+    background-image:url("design.png");
+
+    background-size:100% 100%;
+
+    background-repeat:no-repeat;
+
+    background-position:
+        center top;
+}
+
+
+/* =========================================
+   CLICKABLE AREAS
+=========================================
+
+   নিচের buttons/areas কোনো visual design
+   তৈরি করে না।
+
+   এগুলো transparent।
+   তাই original image একদম একই থাকবে।
+========================================= */
+
+
+.click-area{
+    position:absolute;
+
+    display:block;
+
+    background:transparent;
+
+    border:0;
+
+    padding:0;
+
+    margin:0;
+
+    cursor:pointer;
+
+    z-index:20;
+}
+
+
+/* =========================================
+   TOP LOGO
+========================================= */
+
+.logo-area{
+
+    left:2%;
+
+    top:1%;
+
+    width:27%;
+
+    height:11%;
+}
+
+
+/* =========================================
+   NOTIFICATION
+========================================= */
+
+.notification-area{
+
+    right:19%;
+
+    top:1.2%;
+
+    width:9%;
+
+    height:6%;
+}
+
+
+/* =========================================
+   BALANCE
+========================================= */
+
+.balance-area{
+
+    right:2%;
+
+    top:1%;
+
+    width:19%;
+
+    height:6%;
+}
+
+
+/* =========================================
+   HERO / PLAY NOW
+========================================= */
+
+.play-area{
+
+    left:14%;
+
+    top:33%;
+
+    width:72%;
+
+    height:8%;
+}
+
+
+/* =========================================
+   GAMES TAB
+========================================= */
+
+.games-area{
+
+    left:4%;
+
+    top:45.2%;
+
+    width:47%;
+
+    height:6%;
+}
+
+
+/* =========================================
+   OTHERS TAB
+========================================= */
+
+.others-area{
+
+    right:4%;
+
+    top:45.2%;
+
+    width:47%;
+
+    height:6%;
+}
+
+
+/* =========================================
+   LUDO MATCHES
+========================================= */
+
+.ludo-matches-area{
+
+    left:3%;
+
+    top:53%;
+
+    width:94%;
+
+    height:13%;
+
+}
+
+
+/* =========================================
+   TELEGRAM
+========================================= */
+
+.telegram-area{
+
+    left:3%;
+
+    top:67.2%;
+
+    width:94%;
+
+    height:10%;
+
+}
+
+
+/* =========================================
+   JOIN NOW
+========================================= */
+
+.telegram-join-area{
+
+    right:6%;
+
+    top:69%;
+
+    width:28%;
+
+    height:6%;
+
+}
+
+
+/* =========================================
+   INSTANT WITHDRAWALS
+========================================= */
+
+.withdraw-area{
+
+    left:3%;
+
+    top:78.2%;
+
+    width:94%;
+
+    height:16%;
+
+}
+
+
+/* =========================================
+   BOTTOM NAV
+========================================= */
+
+.home-area{
+
+    left:3%;
+
+    bottom:0;
+
+    width:30%;
+
+    height:8%;
+
+}
+
+
+.refer-area{
+
+    left:35%;
+
+    bottom:0;
+
+    width:30%;
+
+    height:8%;
+
+}
+
+
+.profile-area{
+
+    right:3%;
+
+    bottom:0;
+
+    width:30%;
+
+    height:8%;
+
+}
+
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+@media(min-width:753px){
+
+    body{
+        display:flex;
+        justify-content:center;
+    }
+
+    .app{
+        min-height:100vh;
+        height:auto;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:752px){
+
+    .app{
+        width:100%;
+        max-width:none;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- =================================
+         TOP LOGO
+    ================================== -->
+
+    <button
+        class="click-area logo-area"
+        onclick="openProfile()">
+    </button>
+
+
+    <!-- =================================
+         NOTIFICATION
+    ================================== -->
+
+    <button
+        class="click-area notification-area"
+        onclick="openNotifications()">
+    </button>
+
+
+    <!-- =================================
+         BALANCE
+    ================================== -->
+
+    <button
+        class="click-area balance-area"
+        onclick="openWallet()">
+    </button>
+
+
+    <!-- =================================
+         PLAY NOW
+    ================================== -->
+
+    <button
+        class="click-area play-area"
+        onclick="playNow()">
+    </button>
+
+
+    <!-- =================================
+         GAMES
+    ================================== -->
+
+    <button
+        class="click-area games-area"
+        onclick="showGames()">
+    </button>
+
+
+    <!-- =================================
+         OTHERS
+    ================================== -->
+
+    <button
+        class="click-area others-area"
+        onclick="showOthers()">
+    </button>
+
+
+    <!-- =================================
+         LUDO MATCHES
+    ================================== -->
+
+    <button
+        class="click-area ludo-matches-area"
+        onclick="openLudoMatches()">
+    </button>
+
+
+    <!-- =================================
+         TELEGRAM
+    ================================== -->
+
+    <button
+        class="click-area telegram-area"
+        onclick="openTelegram()">
+    </button>
+
+
+    <!-- =================================
+         TELEGRAM JOIN
+    ================================== -->
+
+    <button
+        class="click-area telegram-join-area"
+        onclick="openTelegram()">
+    </button>
+
+
+    <!-- =================================
+         WITHDRAWALS
+    ================================== -->
+
+    <button
+        class="click-area withdraw-area"
+        onclick="openWithdrawals()">
+    </button>
+
+
+    <!-- =================================
+         HOME
+    ================================== -->
+
+    <button
+        class="click-area home-area"
+        onclick="goHome()">
+    </button>
+
+
+    <!-- =================================
+         REFER
+    ================================== -->
+
+    <button
+        class="click-area refer-area"
+        onclick="openRefer()">
+    </button>
+
+
+    <!-- =================================
+         PROFILE
+    ================================== -->
+
+    <button
+        class="click-area profile-area"
+        onclick="openProfile()">
+    </button>
+
+
+</div>
+
+
+
+<script>
+
+/* =========================================
+   BUTTON FUNCTIONS
+========================================= */
+
+
+function goHome(){
+
+    console.log("Home");
+
+}
+
+
+function openProfile(){
+
+    console.log("Profile");
+
+}
+
+
+function openNotifications(){
+
+    console.log("Notifications");
+
+}
+
+
+function openWallet(){
+
+    console.log("Wallet");
+
+}
+
+
+function playNow(){
+
+    console.log("Play Now");
+
+}
+
+
+function showGames(){
+
+    console.log("Games");
+
+}
+
+
+function showOthers(){
+
+    console.log("Others");
+
+}
+
+
+function openLudoMatches(){
+
+    console.log("Ludo Matches");
+
+}
+
+
+function openTelegram(){
+
+    /*
+       এখানে আপনার আসল Telegram link দিন।
+
+       Example:
+
+       window.location.href =
+       "https://t.me/yourchannel";
+    */
+
+    console.log("Telegram");
+
+}
+
+
+function openWithdrawals(){
+
+    console.log("Instant Withdrawals");
+
+}
+
+
+function openRefer(){
+
+    console.log("Refer");
+
+}
+
+</script>
+
+
+</body>
+  </html>
